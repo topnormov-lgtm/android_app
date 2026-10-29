@@ -12,9 +12,7 @@ jobs:
         distribution: 'temurin'
     - name: Build with Gradle
       run: |
-        PROJECT_DIR=$(find . -name "settings.gradle.kts" -exec dirname {} \; | head -n 1)
-        echo "Project found in: $PROJECT_DIR"
-        cd "$PROJECT_DIR"
+        cd android_ws_client
         gradle wrapper
         chmod +x gradlew
         ./gradlew assembleDebug

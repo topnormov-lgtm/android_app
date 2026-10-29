@@ -1,25 +1,20 @@
-- name: set up JDK 17
-  uses: actions/setup-java@v4
-  with:
-    java-version: '17'
-    distribution: 'temurin'
-    
-- name: Find project and build with Gradle
-  run: |
-    # Ищем папку, где лежит файл settings.gradle.kts
-    PROJECT_DIR=$(find . -name "settings.gradle.kts" -exec dirname {} \; | head -n 1)
-    echo "Проект найден в папке: $PROJECT_DIR"
-    cd "$PROJECT_DIR"
-    
-    # Генерируем обертку gradlew, если ее нет
-    gradle wrapper
-    
-    # Даем права на запуск и собираем
-    chmod +x gradlew
-    ./gradlew assembleDebug
-    
-- name: Upload APK
-  uses: actions/upload-artifact@v4
-  with:
-    name: app-debug
-    path: "**/build/outputs/apk/debug/app-debug.apk"
+  - name: set up JDK 17
+    uses: actions/setup-java@v4
+    with:
+      java-version: '17'
+      distribution: 'temurin'
+      
+  - name: Build with Gradle
+    run: |
+      PROJECT_DIR=$(find . -name "settings.gradle.kts" -exec dirname {} \; | head -n 1)
+      echo "Проект найден в папке: $PROJECT_DIR"
+      cd "$PROJECT_DIR"
+      gradle wrapper
+      chmod +x gradlew
+      ./gradlew assembleDebug
+      
+  - name: Upload APK
+    uses: actions/upload-artifact@v4
+    with:
+      name: app-debug
+      path: "**/build/outputs/apk/debug/app-debug.apk"

@@ -15,7 +15,7 @@ jobs:
     - name: Build with Gradle
       run: cd android_ws_client && ./gradlew assembleDebug
     - name: Upload APK
-      uses: actions/upload-artifact@v3
+      uses: actions/upload-artifact@v4
       with:
         name: app-debug
         path: android_ws_client/app/build/outputs/apk/debug/app-debug.apk

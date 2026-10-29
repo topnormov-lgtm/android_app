@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">WebSocket Client</string>
+    <string name="server_ip_hint">IP-адрес сервера</string>
+    <string name="server_port_hint">Порт</string>
+    <string name="connect">Подключиться</string>
+    <string name="disconnect">Отключиться</string>
+    <string name="not_connected">Не подключено</string>
+    <string name="proxy_active">Proxy Active</string>
+</resources>
